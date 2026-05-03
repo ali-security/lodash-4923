@@ -2,15 +2,15 @@ name: CI Docs
 
 on:
   push:
-    branches: [ main ]
+    branches: [main, master]
   pull_request:
     # Run on every PR, regardless of branch
-    branches: [ '*' ]
+    branches: ['*']
 
 jobs:
   test-docs:
     name: Docs Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code
@@ -19,14 +19,14 @@ jobs:
       - name: Setup Node.js (latest)
         uses: actions/setup-node@v4
         with:
-          node-version: 'node' # Use 'node' for the latest version
-          cache: 'npm'
+          node-version: node   # Use 'node' for the latest version
+          cache: npm
 
       - name: Install dependencies
         run: npm install
 
       - name: Test documentation
-        run: |
+        run: |-
           npm run doc:fp
           npm run doc:site
           npm run doc

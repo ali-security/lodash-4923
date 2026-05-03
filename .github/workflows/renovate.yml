@@ -1,12 +1,10 @@
 name: Renovate
 on:
-  schedule:
-    - cron: '0 23 1 * *'  # 23:00 on the first day of each month
   workflow_dispatch:       # allow manual runs
 
 jobs:
   renovate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
